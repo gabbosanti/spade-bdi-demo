@@ -22,22 +22,3 @@ class GoombaAgent(BDIAgent):
             self.bdi.set_belief("direction", "left")
             yield
 
-
-async def main():
-
-    goomba = GoombaAgent(
-        "goomba@localhost",
-        "password",
-        "goomba0.asl"
-    )
-
-    await goomba.start()
-
-    # Simuliamo una percezione proveniente dall'ambiente
-    goomba.bdi.set_belief("obstacle_ahead")   
-
-    await asyncio.Event().wait()
-
-
-if __name__ == "__main__":
-    spade.run(main(), True)

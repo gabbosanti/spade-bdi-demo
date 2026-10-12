@@ -1,16 +1,5 @@
-direction(right).
+!start.
 
-!patrol.
-
-+!patrol : direction(left)
-    <- .move_left;
-       !patrol.
-
-+!patrol : obstacle_ahead 
-    <- .turn_around;
-       !patrol.
-
-+!patrol : direction(right)
-    <- .move_right;
-       !patrol.
-
++!start <-
+    .print("Hello! Goomba BDI agent started.");
+    .print("AgentSpeak plan executed successfully.").

@@ -1,5 +1,6 @@
 
 import time
+import datetime 
 from dataclasses import dataclass
 from queue import Queue, Empty
 from threading import Thread, Event
@@ -22,7 +23,8 @@ def run_game_loop(perception_queue, action_queue, stop_event):
 
         try:
             action = action_queue.get(timeout=1.0)
-            print(f"[Game] Action received: {action}")
+            timestamp = datetime.datetime.now()
+            print(f"[Game] Action received: {action} at {timestamp}")
         except Empty:
             print("[Game] No action received yet")
 
