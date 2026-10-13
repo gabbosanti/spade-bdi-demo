@@ -9,12 +9,14 @@ from spade_bdi.bdi import BDIAgent
 def run_spade(stop_event):
     
     async def main():
-        asl_path = Path(__file__).with_name("goomba.asl")
+        #asl_path = Path(__file__).with_name("goomba0.asl")
+
+        print("[SPADE] ciao")
 
         agent = BDIAgent(
             "goomba@localhost",
             "goomba_password",
-            str(asl_path)
+            "goomba0.asl"
         )
 
         print("[SPADE] Starting agent...")
@@ -31,4 +33,4 @@ def run_spade(stop_event):
             await agent.stop()
             print("[SPADE] Agent stopped")
 
-    spade.run(main(), embedded_xmpp_server=True)
+    spade.run(main(), embedded_xmpp_server=False)
