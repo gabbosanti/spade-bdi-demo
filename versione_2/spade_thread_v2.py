@@ -9,14 +9,14 @@ from spade_bdi.bdi import BDIAgent
 def run_spade(stop_event):
     
     async def main():
-        #asl_path = Path(__file__).with_name("goomba0.asl")
+        asl_path = Path(__file__).with_name("goomba0.asl")
 
         print("[SPADE] ciao")
 
         agent = BDIAgent(
             "goomba@localhost",
             "goomba_password",
-            "goomba0.asl"
+            str(asl_path)
         )
 
         print("[SPADE] Starting agent...")
