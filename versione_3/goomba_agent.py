@@ -1,9 +1,25 @@
 import asyncio
 import spade
 from spade_bdi.bdi import BDIAgent
-
+from spade import wait_until_finished
+from spade.agent import Agent
+from spade.behaviour import CyclicBehaviour
 class GoombaAgent(BDIAgent):
+    class PatrolBehaviour(CyclicBehaviour): # inner class
+        async def on_start(self):
+            print("Starting patrol behaviour . . .")
 
+        async def run(self):
+            print("Counter: {}".format(self.counter))
+            self.counter += 1
+            await asyncio.sleep(1)
+
+    async def setup(self):
+        print("Agent starting . . .")
+        await asyncio.sleep(1)
+        b = self.PatrolBehaviour()
+        self.add_behaviour(b)
+    
     def add_custom_actions(self, actions):
 
         @actions.add(".move_right", 0)

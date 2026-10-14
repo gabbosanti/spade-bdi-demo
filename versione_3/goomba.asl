@@ -18,7 +18,7 @@ direction(right).
 */
 
 +!patrol : obstacle_ahead
-    <- .print("Obstacle ahead !")
+    <- .print("Obstacle ahead !");
        .turn_around;
        !patrol.
 
@@ -29,9 +29,6 @@ direction(right).
 +!patrol : direction(left)
     <- .move_left;
        !patrol.
-
--alive : 
-    <- .kill_agent.
 
 /*
 +!kill_mario : 

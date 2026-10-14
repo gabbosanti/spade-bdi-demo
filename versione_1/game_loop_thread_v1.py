@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from queue import Queue, Empty
 from threading import Thread, Event
 
-from spade_thread import run_spade
+from spade_thread_v1 import run_spade
 
 from perceptions import GoombaPerceptionDTO
 

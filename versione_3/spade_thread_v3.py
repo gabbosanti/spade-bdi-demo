@@ -22,6 +22,9 @@ def run_spade(perception_queue, action_queue, stop_event):
 
         await goombaAgent.start()
         
+        print("Wait until user interrupts with ctrl+C")
+        await spade.wait_until_finished(goombaAgent)
+        
         #ricevo la percezione in formato json string
         perceptionJSON = perception_queue.get(timeout=0.2)
         print(f"[Agent] Perception received: {perceptionJSON}")
@@ -35,6 +38,7 @@ def run_spade(perception_queue, action_queue, stop_event):
         
         #asl ragiona ed elabora un piano....
         
+        action = goombaAgent.bdi.get_belief("direction")
 
         action_queue.put(action)
         print("[Agent] Action sent")

@@ -2,14 +2,17 @@ import json
 import time
 from threading import Thread, Event
 import datetime
-from versione_3.spade_thread_v3 import run_spade
+from spade_thread_v3 import run_spade
 from perceptions import GoombaPerceptionDTO
 from queue import Queue, Empty
 
 # --- Game Engine simulator ---
 
 def run_game_loop(perception_queue, action_queue, stop_event):
+    
     while not stop_event.is_set():
+        
+        time.sleep(2)
         
         #generata una percezione statica
         perceptionDTO = GoombaPerceptionDTO(
@@ -28,8 +31,6 @@ def run_game_loop(perception_queue, action_queue, stop_event):
             print(f"[Game] Action received: {action} at {timestamp}")
         except Empty:
             print("[Game] No action received yet")
-
-        time.sleep(1)
 
 
 if __name__ == "__main__":

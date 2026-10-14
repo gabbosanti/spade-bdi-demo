@@ -1,7 +1,7 @@
 import time
 from threading import Thread, Event
 
-from versione_2.spade_thread_v2 import run_spade
+from spade_thread_v2 import run_spade
 
 
 def run_game_loop(stop_event):
