@@ -1,3 +1,4 @@
+import json
 import time
 from threading import Thread, Event
 import datetime
@@ -11,12 +12,14 @@ def run_game_loop(perception_queue, action_queue, stop_event):
     while not stop_event.is_set():
         
         #generata una percezione statica
-        perception = GoombaPerceptionDTO(
+        perceptionDTO = GoombaPerceptionDTO(
             obstacle_ahead=True, #ho un ostacolo davanti
             direction="right" #mi sto muovendo a destra
         )
+        
+        perceptionJSON = json.dumps(perceptionDTO.__dict__)
 
-        perception_queue.put(perception) #metto la percezione nella coda
+        perception_queue.put(perceptionJSON) #metto la percezione nella coda
         print("[Game] Perception sent")
 
         try:

@@ -18,7 +18,16 @@ class GoombaAgent(BDIAgent):
 
         @actions.add(".turn_around", 0)
         def turn_around(agent, term, intention):
-            print("Goomba turns around!")
-            self.bdi.set_belief("direction", "left")
+            
+            self.bdi.remove_belief("obstacle_ahead")
+            
+            if(self.bdi.get_belief("direction") == "right"):
+                self.bdi.set_belief("direction", "left")
+                print("Goomba turns left!")
+
+            else :
+                self.bdi.set_belief("direction", "right")
+                print("Goomba turns right!")
+
             yield
 
